@@ -8,6 +8,11 @@ app.use(express.json());
 
 // ✅ Use LocalAuth to save sessions automatically:
 const client = new Client({
+    puppeteer: {
+            // optional but recommended to avoid path issues
+           args: ['--no-sandbox', '--disable-setuid-sandbox'],
+           headless: true, // or false if you want to see the browser
+       },
     authStrategy: new LocalAuth() // Automatically saves and restores session in .wwebjs_auth folder
 });
 
